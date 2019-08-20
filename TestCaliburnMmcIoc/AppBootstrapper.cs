@@ -24,7 +24,7 @@
 
       container.Singleton<IWindowManager, WindowManager>();
       container.Singleton<IEventAggregator, EventAggregator>();
-      container.PerRequest<ShellViewModel>();
+      container.PerRequest<IShell, ShellViewModel>();
       Resolver = new CaliburnDependencyResolver(container);
     }
 
@@ -47,7 +47,7 @@
     {
       // need ADMIN or add urlacl.
       _Server = WebApp.Start("http://*:18685");
-      DisplayRootViewFor<ShellViewModel>();
+      DisplayRootViewFor<IShell>();
     }
 
     protected override void OnExit(object sender, EventArgs e)
